@@ -1,7 +1,8 @@
-import { Search, ShoppingBag } from "lucide-react"
+import { Search, ShoppingBag, Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
+// navbar items
 const navItems = [
   { id:1, label: "Store", href: "/store" },
   { id:2, label: "Mac", href: "/mac" },
@@ -18,17 +19,22 @@ const navItems = [
 
 export default function Navbar() {
    return (
-      <nav className=" bg-zinc-50 border-b border-black/10 backdrop-blur-xl z-50 sticky top-0 flex justify-center">
-         <div className="flex p-4 items-center max-w-5xl text-zinc-900 justify-between">
-            <div className="px-5"><Image className="" width={32} height={32} alt='web-icon' src='./logo/apple-logo.svg' /></div>
-            <div className="flex gap-2 w-full justify-between">
+      <nav className=" bg-white border-b border-black/10 backdrop-blur-xl z-50 sticky top-0 flex justify-center">
+         <div className="flex p-3 text-xs items-center w-full lg:max-w-6xl text-zinc-900 justify-between">
+            {/* logo */}
+            <div className="px-8 "><Image className="size-6 lg:size-4" width={20} height={20} alt='web-icon' src='/logo/apple-logo.svg' /></div>
+            {/* items */}
+            <div className=" hidden lg:flex flex-1 justify-between">
                {
-                  navItems.map(item => <Link className="" href={'#'} key={item.id}>{item.label}</Link>)
+                  navItems.map(item => <Link className="" href={item.href} key={item.id}>{item.label}</Link>)
                }
             </div>
-            <div className="flex gap-3 px-5">
-               <div><Search className="size-5" /></div>
-               <div><ShoppingBag className="size-5" /></div>
+            {/* buttons */}
+            <div className="flex gap-8 px-8">
+               <div><Search className="size-6 lg:size-4" /></div>
+               <div><ShoppingBag className="size-6 lg:size-4" /></div>
+               {/* menu button for -Lg */}
+               <div className=" lg:hidden"><Menu className=" size-6 lg:size-4" /></div>
             </div>
          </div>
       </nav>
