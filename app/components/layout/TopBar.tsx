@@ -1,12 +1,12 @@
 'use client'
 
-import { Search, ShoppingBag, Menu, X } from "lucide-react"
+import { Search, ShoppingBag, Menu, X} from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
-const MotionLink = motion(Link)
-
+import ThemeToggle from "../themeToggle/ThemeToggle"
+const MotionLink = motion.create(Link)
 
 
 
@@ -40,7 +40,7 @@ export default function TopBar() {
    }, [isMenuOpen])
 
    return (
-      <nav className="bg-white/80 dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
+      <nav className="bg-white dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
          {/* container */}
          <div className="flex py-3 text-xs items-center dark:text-white w-full lg:max-w-5xl text-zinc-900 justify-between">
             {/* logo */}
@@ -57,6 +57,7 @@ export default function TopBar() {
                <div className={`${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"} flex transition-opacity duration-200 gap-8`}>
                   <button type="button"><Search className="size-5  lg:size-4" /></button>
                   <button type="button"><ShoppingBag className="size-5 lg:size-4" /></button>
+                  <ThemeToggle/>
                </div>
 
                <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden">
