@@ -4,7 +4,10 @@ const nextConfig: NextConfig = {
    /* config options here */
    experimental: {
       optimizePackageImports: ['lucide-react'],
-   }
+   },
+   images: {
+      qualities: [75, 100],
+   },
 
 };
 

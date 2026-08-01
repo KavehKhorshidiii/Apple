@@ -9,7 +9,8 @@
 }
 
 @theme {
-   --container: 96rem
+   --container: 96rem;
+   --color-apple-blue: #0071E3; 
 }
 
 @theme inline {
