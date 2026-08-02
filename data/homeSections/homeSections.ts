@@ -8,7 +8,7 @@ interface HomeSectionType {
 interface homeSectionsGridType {
    id: number;
    title: string;
-   titleImage?:string;
+   titleImage?: string;
    description: string;
    image: string;
    buttons: { label: string, href: string, variant: "filled" | "outline" }[]
@@ -54,7 +54,7 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
    {
       id: 1,
       title: "Upgrade",
-      titleImage:"/homeSection/productGridTitle-1.jpg",
+      titleImage: "/homeSection/productGridTitle-1.jpg",
       description: "Love it. Lease it. Upgrade it.",
       image: "/homeSection/productGrid-1.jpg",
       buttons: [
@@ -65,6 +65,7 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
    {
       id: 2,
       title: "iPad air",
+      titleImage: "/homeSection/productGridTitle-2.jpg",
       description: "Now supercharged by M4.",
       image: "/homeSection/productGrid-2.jpg",
       buttons: [
@@ -76,6 +77,7 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
    {
       id: 3,
       title: "homeSection",
+      titleImage: "/homeSection/productGridTitle-3.jpg",
       description: "The ultimate way to watch your health.",
       image: "/homeSection/productGrid-3.jpg",
       buttons: [
@@ -95,6 +97,7 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
    {
       id: 5,
       title: "TradeIn",
+      titleImage: "/homeSection/productGridTitle-4.jpg",
       description: "Get up to $195 - $695 in credit when you trade in iPhone 13 or higher.",
       image: "/homeSection/productGrid-5.jpg",
       buttons: [
@@ -104,6 +107,7 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
    {
       id: 6,
       title: "Card",
+      titleImage: "/homeSection/productGridTitle-5.jpg",
       description: "Get up to 3% Daily Cash back with every purchase.",
       image: "/homeSection/productGrid-6.jpg",
       buttons: [
