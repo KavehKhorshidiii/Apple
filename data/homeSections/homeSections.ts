@@ -9,7 +9,9 @@ interface homeSectionsGridType {
    id: number;
    title: string;
    titleImage?: string;
-   description: string;
+   titleImageWidth?: number;
+   titleImageHeight?: number;
+   description: string,
    image: string;
    buttons: { label: string, href: string, variant: "filled" | "outline" }[]
 }
@@ -55,6 +57,8 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
       id: 1,
       title: "Upgrade",
       titleImage: "/homeSection/productGridTitle-1.jpg",
+      titleImageWidth: 180,
+      titleImageHeight: 180,
       description: "Love it. Lease it. Upgrade it.",
       image: "/homeSection/productGrid-1.jpg",
       buttons: [
@@ -78,6 +82,8 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
       id: 3,
       title: "homeSection",
       titleImage: "/homeSection/productGridTitle-3.jpg",
+      titleImageWidth: 300,
+      titleImageHeight: 300,
       description: "The ultimate way to watch your health.",
       image: "/homeSection/productGrid-3.jpg",
       buttons: [
@@ -108,6 +114,8 @@ export const homeSectionsGrid: homeSectionsGridType[] = [
       id: 6,
       title: "Card",
       titleImage: "/homeSection/productGridTitle-5.jpg",
+      titleImageWidth: 110,
+      titleImageHeight: 110,
       description: "Get up to 3% Daily Cash back with every purchase.",
       image: "/homeSection/productGrid-6.jpg",
       buttons: [

@@ -15,7 +15,7 @@ export default function PromoSection() {
                      <div className="flex gap-3">
                         {
                            item.buttons.map((btn , index) =>
-                              <button className={btn.variant === "filled" ? " bg-apple-blue text-white px-4 py-2 text-lg rounded-3xl " : "border text-lg border-blue-500 text-blue-500 px-4 py-2 rounded-3xl"} key={index}>
+                              <button className={btn.variant === "filled" ? " bg-apple-blue hover:bg-apple-blue/90 text-white transition-colors duration-200 px-4 py-2 text-lg rounded-3xl " : "border text-lg border-blue-500 text-blue-500 hover:bg-apple-blue hover:text-white transition-colors duration-200 px-4 py-2 rounded-3xl"} key={index}>
                                  {btn.label}
                               </button>
                            )
