@@ -1,11 +1,11 @@
-import { homeSectionsGrid } from "@/data/homeSections/homeSections"
+import { homeSectionsGridData } from "@/data/homeSections/homeSections"
 import Image from "next/image"
 
 export default function productGrid() {
    return (
       <div className=" bg-white grid grid-cols-2 flex-col p-3 gap-3">
          {
-            homeSectionsGrid.map((item, index) =>
+            homeSectionsGridData.map((item, index) =>
                <div className="relative w-full h-145" key={item.id}>
                   <Image className="object-cover" loading={index === 0 ? "eager" : "lazy"} priority={item.id === 1} sizes="100vw" quality={100} fill alt={item.title} src={item.image} />
 

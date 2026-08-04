@@ -17,7 +17,7 @@ interface homeSectionsGridType {
 }
 
 // home Sections data
-export const homeSections: HomeSectionType[] = [
+export const homeSectionsData: HomeSectionType[] = [
    {
       id: 1,
       title: "iPhone",
@@ -52,7 +52,7 @@ export const homeSections: HomeSectionType[] = [
 ];
 
 // home SectionsGrid data
-export const homeSectionsGrid: homeSectionsGridType[] = [
+export const homeSectionsGridData: homeSectionsGridType[] = [
    {
       id: 1,
       title: "Upgrade",
