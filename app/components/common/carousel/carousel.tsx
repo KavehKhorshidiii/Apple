@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { ChevronRight, ChevronLeft, Equal } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Pause } from 'lucide-react';
 
 
 interface CarouselProps<T> {
@@ -14,22 +14,28 @@ export default function Carousel<T>({ items, renderItem }: CarouselProps<T>) {
    const Duration = 3000
 
    const [currentIndex, setCurrentIndex] = useState(0)
+
+   const [isHighlightedR, setIsHighlightedR] = useState(false)
    const [isPaused, setIsPaused] = useState(false)
-   const [isHighlighted, setIsHighlighted] = useState(false)
+   const [isHighlightedL, setIsHighlightedL] = useState(false)
 
    const nextIndex = (currentIndex + 1) % items.length
    const prevIndex = (currentIndex - 1 + items.length) % items.length
 
    const handlePrev = () => {
       setCurrentIndex(prevIndex)
-      setIsHighlighted(true)
+      setIsHighlightedL(true)
       setTimeout(() => {
-         setIsHighlighted(false)
-      }, Duration)
+         setIsHighlightedL(false)
+      }, 1000)
    }
 
    const handleNext = () => {
       setCurrentIndex(nextIndex)
+      setIsHighlightedR(true)
+      setTimeout(() => {
+         setIsHighlightedR(false)
+      }, 1000)
    }
 
    const handlePauseToggle = () => {
@@ -73,15 +79,35 @@ export default function Carousel<T>({ items, renderItem }: CarouselProps<T>) {
             </div>
          </div>
 
+
+
          {/* Controls */}
-         <div className="flex justify-center gap-4 py-5">
-            
-            <button onClick={handlePrev} className={`border-2  rounded-full px-2 py-2 ${isHighlighted ? 'border-apple-blue' : 'border-apple-grow'}`}><ChevronLeft className=" size-5 " /></button>
-            <button onClick={handlePauseToggle} className={`border-2 rounded-full p-2 ${isPaused ? "border-apple-blue" : "border-apple-grow"}`}><Equal className=" size-5 rotate-90" /></button>
-            <div key={currentIndex} style={!isPaused ? { animationDuration: `${Duration}ms` } : {}} className="progress-ring p-0.5 rounded-4xl">
-               <button onClick={handleNext} className=" bg-apple-bg  rounded-full px-2 py-2"><ChevronRight className=" size-5" /></button>
+         <div>
+            <div className="flex pt-3 pb-10 justify-center">
+               <div className="relative rounded-4xl">
+
+                  {/*  */}
+                  <div
+                     key={currentIndex}
+                     style={!isPaused ? { animationDuration: `${Duration}ms` } : {}}
+                     className="progress-ring absolute inset-0 rounded-4xl"
+                  />
+
+                  {/* */}
+                  <div className="relative flex bg-apple-bg justify-center rounded-4xl gap-2 p-2 m-1">
+                     <button onClick={handlePrev} className="rounded-full px-2 py-2"> <ChevronLeft className={`size-5 ${isHighlightedL ? "scale-140 text-apple-blue" : "text-black scale-100"}`} /> </button>
+                     <button onClick={handlePauseToggle} className={`transition-all duration-300 rounded-full px-2 py-2`}> <Pause className={` transition-all size-5 duration-300 ${isPaused ? "scale-140 text-apple-blue border-apple-blue" : "text-black border-apple-grow scale-100"}`}/></button>
+                     <button onClick={handleNext} className="bg-apple-bg rounded-full px-2 py-2"> <ChevronRight className={`size-5 transition-all duration-300 ${isHighlightedR ? "scale-140 text-apple-blue" : "text-black scale-100"}`}/></button>
+                  </div>
+               </div>
+
             </div>
          </div>
+
+
+
       </div>
+
+
    )
 }
