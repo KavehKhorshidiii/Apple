@@ -94,10 +94,10 @@ export default function Carousel<T>({ items, renderItem }: CarouselProps<T>) {
                   />
 
                   {/* */}
-                  <div className="relative flex bg-apple-bg justify-center rounded-4xl gap-2 p-2 m-1">
-                     <button onClick={handlePrev} className="rounded-full px-2 py-2"> <ChevronLeft className={`size-5 ${isHighlightedL ? "scale-140 text-apple-blue" : "text-black scale-100"}`} /> </button>
-                     <button onClick={handlePauseToggle} className={`transition-all duration-300 rounded-full px-2 py-2`}> <Pause className={` transition-all size-5 duration-300 ${isPaused ? "scale-140 text-apple-blue border-apple-blue" : "text-black border-apple-grow scale-100"}`}/></button>
-                     <button onClick={handleNext} className="bg-apple-bg rounded-full px-2 py-2"> <ChevronRight className={`size-5 transition-all duration-300 ${isHighlightedR ? "scale-140 text-apple-blue" : "text-black scale-100"}`}/></button>
+                  <div className="relative flex bg-apple-bg justify-center rounded-4xl gap-2 m-0.5">
+                     <button onClick={handlePrev} className="rounded-full px-2 py-2"> <ChevronLeft className={`size-5 transition-all duration-300 ${isHighlightedL ? "scale-120 text-apple-blue" : "text-black scale-100"}`} /> </button>
+                     <button onClick={handlePauseToggle} className={`transition-all duration-300 rounded-full px-2 py-2`}> <Pause className={` transition-all size-4 duration-300 ${isPaused ? "scale-120 text-apple-blue border-apple-blue" : "text-black border-apple-grow scale-100"}`}/></button>
+                     <button onClick={handleNext} className="bg-apple-bg rounded-full px-2 py-2"> <ChevronRight className={`size-5 transition-all duration-300 ${isHighlightedR ? "scale-120 text-apple-blue" : "text-black scale-100"}`}/></button>
                   </div>
                </div>
 

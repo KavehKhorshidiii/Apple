@@ -1,11 +1,10 @@
 'use client'
 
-import { Search, ShoppingBag, Menu, X} from "lucide-react"
+import { Search, ShoppingBag, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { useEffect, useState } from "react"
-import ThemeToggle from "../themeToggle/ThemeToggle"
 const MotionLink = motion.create(Link)
 
 
@@ -46,8 +45,7 @@ export default function TopBar() {
             {/* logo */}
             <div className={`px-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
                <Image className="size-6 dark:hidden lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo.svg" />
-               <Image className="size-6 hidden dark:block lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo-white.svg" />
-               </div>
+            </div>
             {/* items */}
             <div className="hidden lg:flex flex-1 justify-between">
                {navItems.map(item => <Link href={item.href} key={item.id}>{item.label}</Link>)}
@@ -57,7 +55,6 @@ export default function TopBar() {
                <div className={`${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"} flex transition-opacity duration-200 gap-8`}>
                   <button type="button"><Search className="size-5  lg:size-4" /></button>
                   <button type="button"><ShoppingBag className="size-5 lg:size-4" /></button>
-                  <ThemeToggle/>
                </div>
 
                <button type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden">
@@ -95,9 +92,9 @@ export default function TopBar() {
                            className="font-extrabold flex items-start"
                            variants={{
                               hidden: { opacity: 0, y: -12 },
-                              show: { opacity: 1, y: 2 ,},
+                              show: { opacity: 1, y: 2, },
                            }}
-                           transition={{ duration: 0.40}}
+                           transition={{ duration: 0.40 }}
                         >
                            {item.label}
                         </MotionLink>

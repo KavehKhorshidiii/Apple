@@ -1,5 +1,5 @@
 import TopBar from "./components/layout/TopBar";
-import ThemeProvider from "./components/providers/theme/ThemeProvider";
+import Footer from "./components/layout/Footer";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -32,10 +32,9 @@ export default function RootLayout({
          className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       >
          <body className="min-h-full flex flex-col">
-            <ThemeProvider>
-               <TopBar></TopBar>
+               <TopBar/>
                {children}
-            </ThemeProvider>
+               <Footer/>
          </body>
       </html>
    );
