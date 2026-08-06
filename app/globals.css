@@ -9,10 +9,36 @@
 }
 
 @theme {
-   --container-apple:;
-   --color-apple-bg:#f5f5f7;
-   --color-apple-blue: #0071E3; 
+   --container-apple: ;
+   --color-apple-bg: #f5f5f7;
+   --color-apple-blue: #0071E3;
+   --color-apple-grow: #d1d5db;
 }
+
+@property --progress-angle {
+   syntax: '<angle>';
+   initial-value: 0deg;
+   inherits: false;
+}
+
+@keyframes fillProgress {
+   0% {
+      --progress-angle: 0deg;
+   }
+
+   100% {
+      --progress-angle: 360deg;
+   }
+}
+
+.progress-ring {
+   background: conic-gradient(#0071E3 var(--progress-angle), #d1d5db 0deg);
+   animation-name: fillProgress;
+   animation-timing-function: linear;
+}
+
+
+
 
 @theme inline {
    --color-background: var(--background);
