@@ -9,10 +9,18 @@
 }
 
 @theme {
-   --container-apple: ;
+   --container-8xl: 64rem;
    --color-apple-bg: #f5f5f7;
    --color-apple-blue: #0071E3;
    --color-apple-grow: #d1d5db;
+}
+
+
+@utility app-container {
+   max-width: 64rem;
+   margin-inline: auto;
+   width: 100%;
+   padding-inline: 1rem;
 }
 
 @property --progress-angle {

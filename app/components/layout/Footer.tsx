@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function Footer() {
    return (
       <footer className="bg-apple-bg border-t border-gray-300 pt-10 pb-6">
-         <div className="max-w-[1024px] mx-auto px-4">
+         <div className="app-container">
 
             {/* گرید ستون‌های لینک */}
             <div className="grid grid-cols-2 md:grid-cols-5 gap-8 py-8 border-b border-gray-300">

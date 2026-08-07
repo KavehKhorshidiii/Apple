@@ -39,9 +39,11 @@ export default function TopBar() {
    }, [isMenuOpen])
 
    return (
+
       <nav className="bg-white dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
          {/* container */}
-         <div className="flex py-3 text-xs items-center dark:text-white w-full lg:max-w-5xl text-zinc-900 justify-between">
+         {/* lg:max-w-5xl */}
+         <div className="flex py-3 text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
             {/* logo */}
             <div className={`px-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
                <Image className="size-6 dark:hidden lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo.svg" />
