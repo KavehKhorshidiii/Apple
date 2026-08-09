@@ -47,21 +47,21 @@ export default function TopBar() {
       <nav className="bg-white dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
          {/* container */}
          {/* lg:max-w-5xl */}
-         <div className="flex text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
+         <div className="flex px-0 h-12 bg-apple-blue text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
             {/* logo */}
-            <div className={`px-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
+            <div className={` pr-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
                <Image className="size-6 dark:hidden lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo.svg" />
             </div>
 
             {/* items + mega menu panel: shared hover parent */}
             <div
                onMouseLeave={handleMouseLeave}
-               className="hidden lg:flex flex-1 justify-between relative"
+               className="hidden py-4 lg:flex flex-1 justify-between relative"
             >
                {navItems.map(item => (
                   <Link
                      onMouseEnter={() => handleMouseEnter(item.id)}
-                     className="py-3"
+                     className=""
                      href={item.href}
                      key={item.id}
                   >
@@ -77,8 +77,10 @@ export default function TopBar() {
                         animate={{ height: "auto" }}
                         exit={{ height: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="absolute top-full left-0 w-full bg-white p-8 flex gap-16"
+                        className="fixed dark:bg-black overflow-hidden top-12 left-0 z-40 w-full bg-white p-8 flex  gap-16"
+
                      >
+                        <div className="flex px-0 app-container flex-1 gap-16">
                         {activeItem.columns.map((column, index) => (
                            <motion.div
                               initial="hidden"
@@ -106,13 +108,14 @@ export default function TopBar() {
                               ))}
                            </motion.div>
                         ))}
+                        </div>
                      </motion.div>
                   )}
                </AnimatePresence>
             </div>
 
             {/* buttons */}
-            <div className="flex gap-8 px-8">
+            <div className="flex gap-8 pl-8">
                <div className={`${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"} flex transition-opacity duration-200 gap-8`}>
                   <button type="button"><Search className="size-5  lg:size-4" /></button>
                   <button type="button"><ShoppingBag className="size-5 lg:size-4" /></button>
@@ -132,7 +135,7 @@ export default function TopBar() {
                   animate={{ height: "100vh" }}
                   exit={{ height: 0 }}
                   transition={{ duration: 0.6 }}
-                  className=" fixed dark:bg-black top-11.5 left-0 w-full bg-white overflow-hidden z-40 lg:hidden"
+                  className=" fixed dark:bg-black top-12 left-0 w-full bg-white overflow-hidden z-40 lg:hidden"
                >
                   <motion.div
                      initial="hidden"
