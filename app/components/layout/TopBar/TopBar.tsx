@@ -27,19 +27,16 @@ export default function TopBar() {
    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
    const handleMouseEnter = (itemId: number) => {
-
       if (timeoutRef.current)
          clearTimeout(timeoutRef.current)
       setActiveItemId(itemId)
-
    }
 
    const handleMouseLeave = () => {
       timeoutRef.current = setTimeout(() => {
          setActiveItemId(null)
-      }, 2000)
+      }, 200)
    }
-
 
    const activeItem = navItems.find(item => item.id === activeItemId)
 
@@ -55,10 +52,65 @@ export default function TopBar() {
             <div className={`px-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
                <Image className="size-6 dark:hidden lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo.svg" />
             </div>
-            {/* items */}
-            <div  onMouseLeave={() => handleMouseLeave()} className="hidden bg-apple-blue lg:flex flex-1 justify-between">
-               {navItems.map(item => <Link onMouseEnter={() => handleMouseEnter(item.id)} className=" py-3 border-2" href={item.href} key={item.id}>{item.label}</Link>)}
+
+            {/* items + mega menu panel: shared hover parent */}
+            <div
+               onMouseLeave={handleMouseLeave}
+               className="hidden lg:flex flex-1 justify-between relative"
+            >
+               {navItems.map(item => (
+                  <Link
+                     onMouseEnter={() => handleMouseEnter(item.id)}
+                     className="py-3"
+                     href={item.href}
+                     key={item.id}
+                  >
+                     {item.label}
+                  </Link>
+               ))}
+
+               {/* Mega Menu Panel */}
+               <AnimatePresence>
+                  {activeItem?.columns && (
+                     <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="absolute top-full left-0 w-full bg-white p-8 flex gap-16"
+                     >
+                        {activeItem.columns.map((column, index) => (
+                           <motion.div
+                              initial="hidden"
+                              animate="show"
+                              exit="hidden"
+                              variants={{
+                                 hidden: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
+                                 show: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
+                              }}
+                              key={index} className="flex flex-col gap-3">
+                              <h3 className="text-zinc-400">{column.title}</h3>
+                              {column.links.map((link, linkIndex) => (
+                                 <MotionLink
+                                    variants={{
+                                       hidden: { opacity: 0, y: -12 },
+                                       show: { opacity: 1, y: 2, },
+                                    }}
+                                    transition={{ duration: 0.40 }}
+                                    key={linkIndex}
+                                    href={link.href}
+                                    className={link.emphasis ? "text-xl text-black font-semibold" : "text-sm"}
+                                 >
+                                    {link.label}
+                                 </MotionLink>
+                              ))}
+                           </motion.div>
+                        ))}
+                     </motion.div>
+                  )}
+               </AnimatePresence>
             </div>
+
             {/* buttons */}
             <div className="flex gap-8 px-8">
                <div className={`${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"} flex transition-opacity duration-200 gap-8`}>
@@ -71,48 +123,6 @@ export default function TopBar() {
                </button>
             </div>
          </div>
-
-         {/* Active Item Indicator */}
-         <AnimatePresence>
-            {activeItem?.columns && (
-               <motion.div
-                  initial={{ height: 0 }}
-                  animate={{ height: "auto" }}
-                  exit={{ height: 0 }}
-                  transition={{ duration: 0.6 }}
-                  onMouseEnter={() => activeItemId && handleMouseEnter(activeItemId)} onMouseLeave={handleMouseLeave} className="absolute top-full left-0 w-full bg-white p-8 flex gap-16">
-                  {activeItem.columns.map((column, index) => (
-                     <motion.div
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                        variants={{
-                           hidden: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
-                           show: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
-                        }}
-                        key={index} className="flex flex-col gap-3">
-                        <h3 className="text-zinc-400">{column.title}</h3>
-                        {column.links.map((link, linkIndex) => (
-                           <MotionLink
-                              variants={{
-                                 hidden: { opacity: 0, y: -12 },
-                                 show: { opacity: 1, y: 2, },
-                              }}
-                              transition={{ duration: 0.40 }}
-                              key={linkIndex}
-                              href={link.href}
-                              className={link.emphasis ? "text-xl text-black font-semibold" : "text-sm"}
-                           >
-                              {link.label}
-                           </MotionLink>
-                        ))}
-                     </motion.div>
-                  ))}
-               </motion.div>
-            )}
-         </AnimatePresence>
-
-
 
          {/* Mobile Menu */}
          <AnimatePresence>
