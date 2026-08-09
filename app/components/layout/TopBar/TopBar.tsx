@@ -4,30 +4,16 @@ import { Search, ShoppingBag, Menu, X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 const MotionLink = motion.create(Link)
+import { navItems } from "@/data/navigation/navItems"
 
-
-
-// navItems
-export const navItems = [
-   { id: 1, label: "Store", href: "/store" },
-   { id: 2, label: "Mac", href: "/mac" },
-   { id: 3, label: "iPad", href: "/ipad" },
-   { id: 4, label: "iPhone", href: "/iphone" },
-   { id: 5, label: "Watch", href: "/watch" },
-   { id: 6, label: "Vision", href: "/vision" },
-   { id: 7, label: "AirPods", href: "/airpods" },
-   { id: 8, label: "TV & Home", href: "/tv-home" },
-   { id: 9, label: "Entertainment", href: "/entertainment" },
-   { id: 10, label: "Accessories", href: "/accessories" },
-   { id: 11, label: "Support", href: "/support" },
-]
 
 
 export default function TopBar() {
 
    const [isMenuOpen, setIsMenuOpen] = useState(false)
+   const [activeItemId, setActiveItemId] = useState<number | null>(null)
 
    useEffect(() => {
       if (isMenuOpen) {
@@ -38,19 +24,40 @@ export default function TopBar() {
       return () => { document.body.style.overflow = "" }
    }, [isMenuOpen])
 
+   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+   const handleMouseEnter = (itemId: number) => {
+
+      if (timeoutRef.current)
+         clearTimeout(timeoutRef.current)
+      setActiveItemId(itemId)
+
+   }
+
+   const handleMouseLeave = () => {
+      timeoutRef.current = setTimeout(() => {
+         setActiveItemId(null)
+      }, 2000)
+   }
+
+
+   const activeItem = navItems.find(item => item.id === activeItemId)
+
+
+
    return (
 
       <nav className="bg-white dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
          {/* container */}
          {/* lg:max-w-5xl */}
-         <div className="flex py-3 text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
+         <div className="flex text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
             {/* logo */}
             <div className={`px-8 transition-opacity duration-200 ${isMenuOpen ? " pointer-events-none opacity-0" : "opacity-100"}`}>
                <Image className="size-6 dark:hidden lg:size-5" width={25} height={25} alt="web-icon" src="/logo/apple-logo.svg" />
             </div>
             {/* items */}
-            <div className="hidden lg:flex flex-1 justify-between">
-               {navItems.map(item => <Link href={item.href} key={item.id}>{item.label}</Link>)}
+            <div  onMouseLeave={() => handleMouseLeave()} className="hidden bg-apple-blue lg:flex flex-1 justify-between">
+               {navItems.map(item => <Link onMouseEnter={() => handleMouseEnter(item.id)} className=" py-3 border-2" href={item.href} key={item.id}>{item.label}</Link>)}
             </div>
             {/* buttons */}
             <div className="flex gap-8 px-8">
@@ -64,6 +71,48 @@ export default function TopBar() {
                </button>
             </div>
          </div>
+
+         {/* Active Item Indicator */}
+         <AnimatePresence>
+            {activeItem?.columns && (
+               <motion.div
+                  initial={{ height: 0 }}
+                  animate={{ height: "auto" }}
+                  exit={{ height: 0 }}
+                  transition={{ duration: 0.6 }}
+                  onMouseEnter={() => activeItemId && handleMouseEnter(activeItemId)} onMouseLeave={handleMouseLeave} className="absolute top-full left-0 w-full bg-white p-8 flex gap-16">
+                  {activeItem.columns.map((column, index) => (
+                     <motion.div
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden"
+                        variants={{
+                           hidden: { transition: { staggerChildren: 0.03, staggerDirection: -1 } },
+                           show: { transition: { staggerChildren: 0.04, delayChildren: 0.1 } },
+                        }}
+                        key={index} className="flex flex-col gap-3">
+                        <h3 className="text-zinc-400">{column.title}</h3>
+                        {column.links.map((link, linkIndex) => (
+                           <MotionLink
+                              variants={{
+                                 hidden: { opacity: 0, y: -12 },
+                                 show: { opacity: 1, y: 2, },
+                              }}
+                              transition={{ duration: 0.40 }}
+                              key={linkIndex}
+                              href={link.href}
+                              className={link.emphasis ? "text-xl text-black font-semibold" : "text-sm"}
+                           >
+                              {link.label}
+                           </MotionLink>
+                        ))}
+                     </motion.div>
+                  ))}
+               </motion.div>
+            )}
+         </AnimatePresence>
+
+
 
          {/* Mobile Menu */}
          <AnimatePresence>
@@ -106,5 +155,7 @@ export default function TopBar() {
             )}
          </AnimatePresence>
       </nav>
+
    )
+
 }

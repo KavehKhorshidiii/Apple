@@ -3,16 +3,16 @@ import Image from "next/image"
 
 export default function productGrid() {
    return (
-      <div className=" bg-white grid grid-cols-2 flex-col p-3 gap-3">
+      <div className=" bg-white grid grid-cols-1 md:grid-cols-2 flex-col p-3 gap-3">
          {
-            homeSectionsGridData.map((item, index) =>
+            homeSectionsGridData.map(item =>
                <div className="relative w-full h-145" key={item.id}>
-                  <Image className="object-cover" loading={index === 0 ? "eager" : "lazy"} priority={item.id === 1} sizes="100vw" quality={100} fill alt={item.title} src={item.image} />
+                  <Image className="object-cover" priority={item.id === 1} sizes="(max-width: 768px) 100vw, 50vw" quality={100} fill alt={item.title} src={item.image} />
 
                   <div className="flex w-full mt-12 absolute flex-col items-center justify-center">
                      {
                         item.titleImage ?
-                           <Image className="" alt="title Image" width={item.titleImageWidth || 150} height={item.titleImageWidth || 150} quality={100} src={item.titleImage} />
+                           <Image className="" alt="title Image" style={{ width: "auto", height: "auto" }} width={item.titleImageWidth || 150} height={item.titleImageWidth || 150} quality={100} src={item.titleImage} />
                            :
                            <h2 className=" text-4xl text-white font-semibold">{item.title}</h2>
                      }

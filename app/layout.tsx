@@ -1,4 +1,4 @@
-import TopBar from "./components/layout/TopBar";
+import TopBar from "./components/layout/TopBar/TopBar";
 import Footer from "./components/layout/Footer";
 
 import type { Metadata } from "next";
