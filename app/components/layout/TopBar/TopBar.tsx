@@ -166,6 +166,8 @@ export default function TopBar() {
                )}
             </AnimatePresence>
          </nav>
+         
+         {/* backdrop */}
          <AnimatePresence>
             {activeItem?.columns && (
                <>
