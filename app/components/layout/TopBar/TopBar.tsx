@@ -110,6 +110,7 @@ export default function TopBar() {
                         </motion.div>
                      )}
                   </AnimatePresence>
+                  
                </div>
 
                {/* buttons */}
@@ -123,6 +124,7 @@ export default function TopBar() {
                      {isMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
                   </button>
                </div>
+
             </div>
 
             {/* Mobile Menu */}
@@ -165,7 +167,7 @@ export default function TopBar() {
                   </motion.div>
                )}
             </AnimatePresence>
-            
+
          </nav>
 
          {/* backdrop */}
