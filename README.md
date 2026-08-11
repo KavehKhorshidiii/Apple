@@ -74,7 +74,7 @@ This project is being developed as a portfolio project to practice and demonstra
 
 <table>
 <tr>
-<td><img src="./public/screenShot/1.png" width="280"/></td>
+<td><img src="./public/screenShot/3.png" width="280"/></td>
 <td><img src="./public/screenShot/4.png" width="280"/></td>
 </tr>
 </table>
