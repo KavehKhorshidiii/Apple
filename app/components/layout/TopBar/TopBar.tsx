@@ -44,7 +44,7 @@ export default function TopBar() {
    return (
       <>
          <nav className="bg-white dark:bg-black/80 border-b border-black/10 dark:border-white/10 backdrop-blur-xl sticky z-50 top-0 flex flex-col lg:items-center">
-         
+
             {/* container */}
             <div className="flex h-12 text-xs items-center dark:text-white w-full app-container text-zinc-900 justify-between">
 
@@ -174,16 +174,13 @@ export default function TopBar() {
          {/* backdrop */}
          <AnimatePresence>
             {activeItem?.columns && (
-               <>
-                  <div className="fixed inset-0 z-30 backdrop-blur-sm pointer-events-none will-change-[backdrop-filter]" />
-                  <motion.div
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     exit={{ opacity: 0 }}
-                     transition={{ duration: 0.3, ease: "linear" }}
-                     className="fixed inset-0 z-30 bg-white/50"
-                  />
-               </>
+               <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "linear" }}
+                  className="fixed inset-0 z-30 backdrop-blur-sm bg-white/50"
+               />
             )}
          </AnimatePresence>
 

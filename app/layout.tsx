@@ -1,5 +1,5 @@
-import TopBar from "./components/layout/TopBar/TopBar";
-import Footer from "./components/layout/Footer";
+import TopBar from "./components/layout/topBar/TopBar";
+import Footer from "./components/layout/footer/Footer";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";

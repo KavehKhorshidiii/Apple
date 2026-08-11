@@ -29,17 +29,6 @@
    inherits: false;
 }
 
-/* 
-@keyframes fillProgress {
-   0% {
-      --progress-angle: 0deg;
-   }
-
-   100% {
-      --progress-angle: 360deg;
-   }
-} */
-
 
 @keyframes fillProgress {
    0% {
@@ -95,7 +84,7 @@ body {
 
 
 
-/* Designer Badge - گرادیانت متحرک + درخشش */
+/* Designer Badge */
 
 @keyframes gradient-shift {
    0% {
