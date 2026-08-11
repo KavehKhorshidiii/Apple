@@ -61,11 +61,11 @@ This project is being developed as a portfolio project to practice and demonstra
 
 ###### Desktop
 
-![Screenshot](./public/screenShot/Image%20(3).png)
+![Screenshot](./public/screenShot/1.png)
 
 <br/>
 
-![Screenshot](./public/screenshot/Image%20(2).png)
+![Screenshot](./public/screenshot/2.png)
 
 <br/>
 
@@ -74,8 +74,8 @@ This project is being developed as a portfolio project to practice and demonstra
 
 <table>
 <tr>
-<td><img src="./public/screenshot/Image (1).png" width="280"/></td>
-<td><img src="./public/screenshot/Image.png" width="280"/></td>
+<td><img src="./public/screenshot/3.png" width="280"/></td>
+<td><img src="./public/screenshot/4.png" width="280"/></td>
 </tr>
 </table>
 
