@@ -61,29 +61,21 @@ This project is being developed as a portfolio project to practice and demonstra
 
 ###### Desktop
 
-![Screenshot](./public/screenshot/Desktop-1.png)
+![Screenshot](./public/screenShot/Image%20(3).png)
 
 <br/>
 
-![Screenshot](./public/screenshot/Desktop-2.png)
+![Screenshot](./public/screenshot/Image%20(2).png)
 
 <br/>
 
-![Screenshot](./public/screenshot/Desktop-3.png)
-
-<br/>
-
-![Screenshot](./public/screenshot/Desktop-4.png)
-
-<br/>
 
 ###### Mobile
 
 <table>
 <tr>
-<td><img src="./public/screenshot/Mobile-1.png" width="280"/></td>
-<td><img src="./public/screenshot/Mobile-2.png" width="280"/></td>
-<td><img src="./public/screenshot/Mobile-3.png" width="280"/></td>
+<td><img src="./public/screenshot/Image (1).png" width="280"/></td>
+<td><img src="./public/screenshot/Image.png" width="280"/></td>
 </tr>
 </table>
 
