@@ -65,7 +65,7 @@ This project is being developed as a portfolio project to practice and demonstra
 
 <br/>
 
-![Screenshot](./public/screenshot/2.png)
+![Screenshot](./public/screenShot/2.png)
 
 <br/>
 
