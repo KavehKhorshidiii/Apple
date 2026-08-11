@@ -40,7 +40,7 @@ export default function Footer() {
                   className="designer-badge"
                >
                   <span className="designer-badge-inner">
-                     ✦ Developed by {designer.name}
+                     <span className="designer-badge-star">✦</span> Developed by {designer.name}
                   </span>
                </a>
             </div>

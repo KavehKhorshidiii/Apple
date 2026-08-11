@@ -74,58 +74,90 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* Designer Badge */
 
 @keyframes gradient-shift {
    0% {
       background-position: 0% 50%;
    }
-
    50% {
       background-position: 100% 50%;
    }
-
    100% {
       background-position: 0% 50%;
    }
 }
 
+@keyframes shimmer-sweep {
+   0% {
+      transform: translateX(-150%) skewX(-20deg);
+   }
+   100% {
+      transform: translateX(250%) skewX(-20deg);
+   }
+}
+
+@keyframes star-pulse {
+   0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+   }
+   50% {
+      opacity: 0.6;
+      transform: scale(1.2);
+   }
+}
+
 .designer-badge {
    position: relative;
-   display: inline-block;
-   padding: 2px;
+   display: inline-flex;
+   align-items: center;
+   padding: 1.5px;
    border-radius: 9999px;
-   background: linear-gradient(90deg,
-         #0071e3,
-         #a855f7,
-         #ec4899,
-         #0071e3);
-   background-size: 300% 300%;
-   animation: gradient-shift 4s ease infinite;
-   transition: transform 0.25s ease, box-shadow 0.25s ease;
+   background: linear-gradient(90deg, #0071e3, #66a6ff, #0071e3);
+   background-size: 200% 200%;
+   animation: gradient-shift 5s ease infinite;
+   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
 .designer-badge:hover {
-   transform: scale(1.05);
-   box-shadow: 0 0 20px rgba(0, 113, 227, 0.5);
+   transform: scale(1.04);
+   box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
 }
 
 .designer-badge-inner {
-   display: block;
-   background: #1d1d1f;
-   color: white;
+   position: relative;
+   display: flex;
+   align-items: center;
+   gap: 6px;
+   background: linear-gradient(135deg, rgba(0, 90, 200, 0.9), rgba(0, 130, 240, 0.85));
+   backdrop-filter: blur(12px);
+   -webkit-backdrop-filter: blur(12px);
+   color: #ffffff;
    font-size: 0.75rem;
    font-weight: 500;
    padding: 8px 16px;
    border-radius: 9999px;
+   letter-spacing: 0.02em;
+   overflow: hidden;
+}
+
+.designer-badge-inner::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 40%;
+   height: 100%;
+   background: linear-gradient(90deg,
+         transparent,
+         rgba(255, 255, 255, 0.35),
+         transparent);
+   animation: shimmer-sweep 3.5s ease-in-out infinite;
+}
+
+.designer-badge-star {
+   display: inline-block;
+   color: #ffffff;
+   animation: star-pulse 2s ease-in-out infinite;
 }
