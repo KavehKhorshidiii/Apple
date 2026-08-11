@@ -23,10 +23,6 @@ The Live Demo represents the current development version of the project, and new
 
 <br/>
 
-## Watch Demo
-
-<br/>
-
 ## Description
 
 Apple Clone is a frontend project inspired by Apple's official website and designed to recreate its modern visual style, responsive layouts, navigation experience, and product-focused interface.
