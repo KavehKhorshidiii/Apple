@@ -12,7 +12,7 @@ export default function PromoSection() {
                <Image
                   className="object-cover"
                   priority={item.id === 1}
-                  sizes="100vw"
+                  sizes="2000px"
                   quality={100}
                   fill
                   alt={item.title}
